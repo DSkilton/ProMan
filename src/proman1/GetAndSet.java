@@ -12,6 +12,15 @@ package proman1;
 public class GetAndSet {
     private static String sProjectName = null;
     private static String sClientName = null;
+    private static String sProjectType = null;
+
+    public static String getsProjectType() {
+        return sProjectType;
+    }
+
+    public static void setsProjectType(String sProjectType) {
+        GetAndSet.sProjectType = sProjectType;
+    }
 
     public static String getClientName(){
         String getClientName = null;
@@ -31,14 +40,11 @@ public class GetAndSet {
         if (getProjectName == null) {
             sProjectName = "";
             return sProjectName;
-        } else;
+        } 
         return sProjectName;
     }
 
     public static void setProjectName(String sProjectName) {
         GetAndSet.sProjectName = sProjectName;
-//        System.out.println(sProjectName); 
-    }
-    
-    
+    }   
 }

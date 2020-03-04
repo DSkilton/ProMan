@@ -5,8 +5,6 @@
  */
 package proman1;
 
-import java.text.DateFormat;
-
 /**
  *
  * @author MC03353
@@ -18,7 +16,5 @@ public class ProMan1 {
      */
     public static void main(String[] args) {
         // TODO code application logic here
-    }
-    
-    
+    }    
 }

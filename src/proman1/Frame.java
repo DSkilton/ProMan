@@ -497,54 +497,69 @@ public class Frame extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    //if the App radio button is selected, allows access to panel and contents
+    void rBAppTrue(){
+        jPApp.setEnabled(true);
+        rBIos.setEnabled(true);
+        rbAndroid.setEnabled(true);
+        rbOther.setEnabled(true);
+    }
+    
+    //if the App radio button isn't selected, stops access to panel and contents    
+    void rBAppFalse(){
+        jPApp.setEnabled(false);
+        rBIos.setEnabled(false);
+        rbAndroid.setEnabled(false);
+        rbOther.setEnabled(false);
+    }
+    
+    void rBGameTrue(){
+        jPGame.setEnabled(true);
+        tFPlatform.setEnabled(true);
+        lGenre.setEnabled(true);
+    }
+    
+    void rBGameFalse(){
+        jPGame.setEnabled(false);
+        tFPlatform.setEnabled(false);
+        lGenre.setEnabled(false);      
+    }
+    
+    void rBWebsiteTrue(){
+        jPWebsite.setEnabled(true);
+        tFServerAddress.setEnabled(true);
+        tFNumberPages.setEnabled(true);    
+    }
+    
+    void rBWebsiteFalse(){
+        jPWebsite.setEnabled(false);
+        tFServerAddress.setEnabled(false);
+        tFNumberPages.setEnabled(false);
+    }
     private void rBAppActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rBAppActionPerformed
         if(rBApp.isSelected()){
-            jPApp.setEnabled(true);
-            rBIos.setEnabled(true);
-            rbAndroid.setEnabled(true);
-            rbOther.setEnabled(true);
-            
-            jPGame.setEnabled(false);
-            tFPlatform.setEnabled(false);
-            lGenre.setEnabled(false);
-            
-            jPWebsite.setEnabled(false);
-            tFServerAddress.setEnabled(false);
-            tFNumberPages.setEnabled(false);
+            GetAndSet.setsProjectType("App");
+            rBAppTrue();
+            rBGameFalse();
+            rBWebsiteFalse();
         }
     }//GEN-LAST:event_rBAppActionPerformed
 
     private void rBGameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rBGameActionPerformed
         if(rBGame.isSelected()){
-            jPApp.setEnabled(false);
-            rBIos.setEnabled(false);
-            rbAndroid.setEnabled(false);
-            rbOther.setEnabled(false);
-            
-            jPGame.setEnabled(true);
-            tFPlatform.setEnabled(true);
-            lGenre.setEnabled(true);
-            
-            jPWebsite.setEnabled(false);
-            tFServerAddress.setEnabled(false);
-            tFNumberPages.setEnabled(false);
+            GetAndSet.setsProjectType("Game");
+            rBAppFalse();
+            rBGameTrue();
+            rBWebsiteTrue();
         }
     }//GEN-LAST:event_rBGameActionPerformed
 
     private void rBWebsiteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rBWebsiteActionPerformed
         if(rBWebsite.isSelected()){
-            jPApp.setEnabled(false);
-            rBIos.setEnabled(false);
-            rbAndroid.setEnabled(false);
-            rbOther.setEnabled(false);
-            
-            jPGame.setEnabled(false);
-            tFPlatform.setEnabled(false);
-            lGenre.setEnabled(false);
-            
-            jPWebsite.setEnabled(true);
-            tFServerAddress.setEnabled(true);
-            tFNumberPages.setEnabled(true);
+            GetAndSet.setsProjectType("Website");
+            rBAppFalse();
+            rBGameFalse();
+            rBWebsiteTrue();
         }
     }//GEN-LAST:event_rBWebsiteActionPerformed
 
@@ -562,8 +577,6 @@ public class Frame extends javax.swing.JFrame {
 
     private void tFProjectNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tFProjectNameActionPerformed
         GetAndSet.setProjectName(tFProjectName.getText());
-        jTextArea.setText("Project Title: " + tFProjectName.getText());
-
     }//GEN-LAST:event_tFProjectNameActionPerformed
 
     private void jFTDateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jFTDateActionPerformed
@@ -580,15 +593,15 @@ public class Frame extends javax.swing.JFrame {
     }//GEN-LAST:event_jTextAreaPropertyChange
 
     private void tFClientNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tFClientNameActionPerformed
-        GetAndSet.setClientName(tFClientName.getText());
+
     }//GEN-LAST:event_tFClientNameActionPerformed
 
     private void btnCollateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCollateActionPerformed
         jTextArea.setText("Project Title: " + tFProjectName.getText() + "\n"
                         + "Date: " + jFTDate.getText() + "\n" 
                         + "Project Price £" + tFProjectPrice.getText() + "\n"
-                        + "Client Name: " + tFClientName.getText() + "\n");
-        
+                        + "Client Name: " + tFClientName.getText() + "\n"
+                        + "Project Type: " + GetAndSet.getsProjectType());
         System.out.println(GetAndSet.getProjectName());
     }//GEN-LAST:event_btnCollateActionPerformed
 
