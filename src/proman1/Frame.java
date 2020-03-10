@@ -10,7 +10,7 @@ package proman1;
  * @author MC03353
  */
 public class Frame extends javax.swing.JFrame {
-
+    private static String sAddInfo = null;
     /**
      * Creates new form Frame
      */
@@ -64,8 +64,8 @@ public class Frame extends javax.swing.JFrame {
         jPGame = new javax.swing.JPanel();
         tFPlatform = new java.awt.TextField();
         jLabel1 = new javax.swing.JLabel();
-        lGenre = new java.awt.List();
         jLabel2 = new javax.swing.JLabel();
+        tFGenre = new java.awt.TextField();
         jPWebsite = new javax.swing.JPanel();
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
@@ -254,14 +254,35 @@ public class Frame extends javax.swing.JFrame {
 
         tFPlatform.setEnabled(false);
         tFPlatform.setText("Enter Platform");
+        tFPlatform.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tFPlatformActionPerformed(evt);
+            }
+        });
+        tFPlatform.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                tFPlatformFocusLost(evt);
+            }
+        });
 
         jLabel1.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
         jLabel1.setText("Platform:");
 
-        lGenre.setEnabled(false);
-
         jLabel2.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
         jLabel2.setText("Genre:");
+
+        tFGenre.setEnabled(false);
+        tFGenre.setText("Enter Genre");
+        tFGenre.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tFGenreActionPerformed(evt);
+            }
+        });
+        tFGenre.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                tFGenreFocusLost(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPGameLayout = new javax.swing.GroupLayout(jPGame);
         jPGame.setLayout(jPGameLayout);
@@ -270,13 +291,13 @@ public class Frame extends javax.swing.JFrame {
             .addGroup(jPGameLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPGameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lGenre, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(tFPlatform, javax.swing.GroupLayout.DEFAULT_SIZE, 131, Short.MAX_VALUE)
                     .addGroup(jPGameLayout.createSequentialGroup()
                         .addGroup(jPGameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel1)
                             .addComponent(jLabel2))
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addComponent(tFGenre, javax.swing.GroupLayout.DEFAULT_SIZE, 131, Short.MAX_VALUE))
                 .addContainerGap())
         );
         jPGameLayout.setVerticalGroup(
@@ -289,8 +310,8 @@ public class Frame extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 16, Short.MAX_VALUE)
                 .addComponent(jLabel2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(lGenre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(25, 25, 25))
+                .addComponent(tFGenre, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
 
         jPWebsite.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Website", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Dialog", 0, 12))); // NOI18N
@@ -503,6 +524,7 @@ public class Frame extends javax.swing.JFrame {
         rBIos.setEnabled(true);
         rbAndroid.setEnabled(true);
         rbOther.setEnabled(true);
+        sAddInfo = " ";
     }
     
     //if the App radio button isn't selected, stops access to panel and contents    
@@ -516,19 +538,21 @@ public class Frame extends javax.swing.JFrame {
     void rBGameTrue(){
         jPGame.setEnabled(true);
         tFPlatform.setEnabled(true);
-        lGenre.setEnabled(true);
+        tFGenre.setEnabled(true);
+        sAddInfo = " ";
     }
     
     void rBGameFalse(){
         jPGame.setEnabled(false);
         tFPlatform.setEnabled(false);
-        lGenre.setEnabled(false);      
+        tFGenre.setEnabled(false);      
     }
     
     void rBWebsiteTrue(){
         jPWebsite.setEnabled(true);
         tFServerAddress.setEnabled(true);
-        tFNumberPages.setEnabled(true);    
+        tFNumberPages.setEnabled(true);
+        sAddInfo = " ";
     }
     
     void rBWebsiteFalse(){
@@ -536,9 +560,10 @@ public class Frame extends javax.swing.JFrame {
         tFServerAddress.setEnabled(false);
         tFNumberPages.setEnabled(false);
     }
+    
     private void rBAppActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rBAppActionPerformed
         if(rBApp.isSelected()){
-            GetAndSet.setsProjectType("App");
+            GetAndSet.setProjectType("App");
             rBAppTrue();
             rBGameFalse();
             rBWebsiteFalse();
@@ -547,32 +572,45 @@ public class Frame extends javax.swing.JFrame {
 
     private void rBGameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rBGameActionPerformed
         if(rBGame.isSelected()){
-            GetAndSet.setsProjectType("Game");
+            GetAndSet.setProjectType("Game");
             rBAppFalse();
             rBGameTrue();
-            rBWebsiteTrue();
+            rBWebsiteFalse();
         }
     }//GEN-LAST:event_rBGameActionPerformed
 
     private void rBWebsiteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rBWebsiteActionPerformed
         if(rBWebsite.isSelected()){
-            GetAndSet.setsProjectType("Website");
+            GetAndSet.setProjectType("Website");
             rBAppFalse();
             rBGameFalse();
             rBWebsiteTrue();
         }
     }//GEN-LAST:event_rBWebsiteActionPerformed
-
+    
+    void iOSRadioBtn(){
+        GetAndSet.setAdditionalInfo("iOS App");
+    }
+    
+    void androidRadioBtn(){
+        GetAndSet.setAdditionalInfo("Android App");
+    }
+    
+    void otherRadioBtn(){
+        GetAndSet.setAdditionalInfo("Other");
+    }
+    
     private void rbAndroidActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbAndroidActionPerformed
-        // TODO add your handling code here:
+        androidRadioBtn();
     }//GEN-LAST:event_rbAndroidActionPerformed
 
     private void rBIosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rBIosActionPerformed
-        // TODO add your handling code here:
+        iOSRadioBtn();
+        
     }//GEN-LAST:event_rBIosActionPerformed
 
     private void rbOtherActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbOtherActionPerformed
-        // TODO add your handling code here:
+        otherRadioBtn();
     }//GEN-LAST:event_rbOtherActionPerformed
 
     private void tFProjectNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tFProjectNameActionPerformed
@@ -587,7 +625,9 @@ public class Frame extends javax.swing.JFrame {
         jTextArea.setText("Project Title: \n"
                     + "Date: \n"
                     + "Project Price: £\n"
-                    + "Client Name: \n");
+                    + "Client Name: \n"
+                    + "Project Type: \n"
+                    + "Additional Information: ");
         jTextArea.setLineWrap(true);
         jTextArea.setWrapStyleWord(true);
     }//GEN-LAST:event_jTextAreaPropertyChange
@@ -595,19 +635,48 @@ public class Frame extends javax.swing.JFrame {
     private void tFClientNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tFClientNameActionPerformed
 
     }//GEN-LAST:event_tFClientNameActionPerformed
-
+    
     private void btnCollateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCollateActionPerformed
+        if(rBApp.isSelected()){
+            sAddInfo = "  Platform " + GetAndSet.getPlatform();
+        }
+
+        if(rBGame.isSelected()){
+            sAddInfo = "  Game Details " + GetAndSet.getGame();
+        }
+
+        if(rBWebsite.isSelected()){
+            sAddInfo = "  Website Information " + GetAndSet.getWebsite();
+        }
+        
         jTextArea.setText("Project Title: " + tFProjectName.getText() + "\n"
                         + "Date: " + jFTDate.getText() + "\n" 
                         + "Project Price £" + tFProjectPrice.getText() + "\n"
                         + "Client Name: " + tFClientName.getText() + "\n"
-                        + "Project Type: " + GetAndSet.getsProjectType());
-        System.out.println(GetAndSet.getProjectName());
+                        + "Project Type: " + GetAndSet.getProjectType() + "\n"
+                        + "Additional Information:\n"
+                        + sAddInfo);
     }//GEN-LAST:event_btnCollateActionPerformed
 
     private void tFProjectPriceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tFProjectPriceActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_tFProjectPriceActionPerformed
+
+    private void tFPlatformActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tFPlatformActionPerformed
+    
+    }//GEN-LAST:event_tFPlatformActionPerformed
+
+    private void tFGenreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tFGenreActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tFGenreActionPerformed
+
+    private void tFPlatformFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tFPlatformFocusLost
+        GetAndSet.setAdditionalInfo(tFPlatform.getText(),tFGenre.getText());
+    }//GEN-LAST:event_tFPlatformFocusLost
+
+    private void tFGenreFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tFGenreFocusLost
+        GetAndSet.setAdditionalInfo(tFPlatform.getText(),tFGenre.getText());
+    }//GEN-LAST:event_tFGenreFocusLost
 
     /**
      * @param args the command line arguments
@@ -669,7 +738,6 @@ public class Frame extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextArea jTextArea;
     private java.awt.Label lClientName;
-    private java.awt.List lGenre;
     private java.awt.Label lProjectPrice;
     private java.awt.Label label1;
     private java.awt.Label label2;
@@ -683,6 +751,7 @@ public class Frame extends javax.swing.JFrame {
     private javax.swing.JRadioButton rbAndroid;
     private javax.swing.JRadioButton rbOther;
     private java.awt.TextField tFClientName;
+    private java.awt.TextField tFGenre;
     private java.awt.TextField tFNumberPages;
     private java.awt.TextField tFPlatform;
     private java.awt.TextField tFProjectName;
