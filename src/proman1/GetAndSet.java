@@ -10,7 +10,7 @@ package proman1;
  * @author MC03353
  */
 public class GetAndSet {
-    private static String sBuild, sProjectName, sClientName, sProjectType, sPlatform, sGenre, sServerName;
+    private static String sGame, sWebsite, sApp,sProjectName, sClientName, sProjectType, sPlatform, sGenre, sServerName;
     private static int iPages;
     
     public static void setAdditionalInfo(String sPlatform){
@@ -24,22 +24,27 @@ public class GetAndSet {
     public static void setAdditionalInfo(String sPlatform, String sGenre){
         GetAndSet.sPlatform = sPlatform;
         GetAndSet.sGenre = sGenre;
-        GetAndSet.sPlatform = "";
+        
+    }
+    
+    public static void setGame(String sPlatform, String sGenre){
+        GetAndSet.sPlatform = sPlatform;
+        GetAndSet.sGenre = sGenre;
     }
     
     public static String getGame(){
-        sBuild = sPlatform + " " + sGenre;        
-        return sBuild;
+        sGame = "A " + sGenre + " game, on " + sPlatform;        
+        return sGame;
     }
-    
-    public static void setAdditionalInfo(String sServerName, int iPages){
+      
+    public static void setWebsite(String sServerName, int iPages){
         GetAndSet.sServerName = sServerName;
         GetAndSet.iPages = iPages;
-        GetAndSet.sPlatform = "";
     }
     
     public static String getWebsite(){
-        return sBuild;
+        sWebsite = "A " + iPages + "page website, at address " + sServerName;
+        return sWebsite;
     }
     
     public static String getProjectType() {

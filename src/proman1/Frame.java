@@ -5,6 +5,7 @@
  */
 package proman1;
 
+import java.awt.Color;
 /**
  *
  * @author MC03353
@@ -264,6 +265,11 @@ public class Frame extends javax.swing.JFrame {
                 tFPlatformFocusLost(evt);
             }
         });
+        tFPlatform.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                tFPlatformKeyPressed(evt);
+            }
+        });
 
         jLabel1.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
         jLabel1.setText("Platform:");
@@ -327,6 +333,11 @@ public class Frame extends javax.swing.JFrame {
 
         tFServerAddress.setEnabled(false);
         tFServerAddress.setText("Enter Address");
+        tFServerAddress.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tFServerAddressActionPerformed(evt);
+            }
+        });
 
         tFNumberPages.setEnabled(false);
         tFNumberPages.setText("Enter a number");
@@ -512,7 +523,7 @@ public class Frame extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(mainPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(117, Short.MAX_VALUE))
         );
 
         pack();
@@ -650,12 +661,12 @@ public class Frame extends javax.swing.JFrame {
         }
         
         jTextArea.setText("Project Title: " + tFProjectName.getText() + "\n"
-                        + "Date: " + jFTDate.getText() + "\n" 
-                        + "Project Price £" + tFProjectPrice.getText() + "\n"
-                        + "Client Name: " + tFClientName.getText() + "\n"
-                        + "Project Type: " + GetAndSet.getProjectType() + "\n"
-                        + "Additional Information:\n"
-                        + sAddInfo);
+                + "Date: " + jFTDate.getText() + "\n"
+                + "Project Price £" + tFProjectPrice.getText() + "\n"
+                + "Client Name: " + tFClientName.getText() + "\n"
+                + "Project Type: " + GetAndSet.getProjectType() + "\n"
+                + "Additional Information:\n"
+                + sAddInfo);
     }//GEN-LAST:event_btnCollateActionPerformed
 
     private void tFProjectPriceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tFProjectPriceActionPerformed
@@ -677,6 +688,14 @@ public class Frame extends javax.swing.JFrame {
     private void tFGenreFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tFGenreFocusLost
         GetAndSet.setAdditionalInfo(tFPlatform.getText(),tFGenre.getText());
     }//GEN-LAST:event_tFGenreFocusLost
+
+    private void tFPlatformKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tFPlatformKeyPressed
+        
+    }//GEN-LAST:event_tFPlatformKeyPressed
+
+    private void tFServerAddressActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tFServerAddressActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tFServerAddressActionPerformed
 
     /**
      * @param args the command line arguments
