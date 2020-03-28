@@ -11,7 +11,7 @@ package proman1;
  */
 public class Frame extends javax.swing.JFrame {
     private static String sAddInfo = null;
-    private String[][] aProject = new String [10][];
+    
     /**
      * Creates new form Frame
      */
@@ -76,9 +76,10 @@ public class Frame extends javax.swing.JFrame {
         jTextArea = new javax.swing.JTextArea();
         button1 = new java.awt.Button();
         button2 = new java.awt.Button();
-        button3 = new java.awt.Button();
+        btnAddProject = new java.awt.Button();
         btnCollate = new java.awt.Button();
         jComboBox1 = new javax.swing.JComboBox();
+        btnCollate2 = new java.awt.Button();
         java.awt.Label lTitle = new java.awt.Label();
 
         textField2.setText("textField1");
@@ -282,14 +283,14 @@ public class Frame extends javax.swing.JFrame {
 
         tFGenre.setEnabled(false);
         tFGenre.setText("Enter Genre");
-        tFGenre.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                tFGenreActionPerformed(evt);
-            }
-        });
         tFGenre.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusLost(java.awt.event.FocusEvent evt) {
                 tFGenreFocusLost(evt);
+            }
+        });
+        tFGenre.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tFGenreActionPerformed(evt);
             }
         });
 
@@ -336,6 +337,11 @@ public class Frame extends javax.swing.JFrame {
 
         tFServerAddress.setEnabled(false);
         tFServerAddress.setText("Enter Address");
+        tFServerAddress.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                tFServerAddressFocusLost(evt);
+            }
+        });
         tFServerAddress.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 tFServerAddressActionPerformed(evt);
@@ -344,6 +350,11 @@ public class Frame extends javax.swing.JFrame {
 
         tFNumberPages.setEnabled(false);
         tFNumberPages.setText("Enter a number");
+        tFNumberPages.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                tFNumberPagesFocusLost(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPWebsiteLayout = new javax.swing.GroupLayout(jPWebsite);
         jPWebsite.setLayout(jPWebsiteLayout);
@@ -402,11 +413,11 @@ public class Frame extends javax.swing.JFrame {
             }
         });
 
-        button3.setLabel("Add Project");
-        button3.setName(""); // NOI18N
-        button3.addActionListener(new java.awt.event.ActionListener() {
+        btnAddProject.setLabel("Add Project");
+        btnAddProject.setName(""); // NOI18N
+        btnAddProject.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                button3ActionPerformed(evt);
+                btnAddProjectActionPerformed(evt);
             }
         });
 
@@ -420,53 +431,39 @@ public class Frame extends javax.swing.JFrame {
 
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
+        btnCollate2.setLabel("Collate");
+        btnCollate2.setName(""); // NOI18N
+        btnCollate2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCollate2ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout mainPanelLayout = new javax.swing.GroupLayout(mainPanel);
         mainPanel.setLayout(mainPanelLayout);
         mainPanelLayout.setHorizontalGroup(
             mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(mainPanelLayout.createSequentialGroup()
                 .addGroup(mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addGroup(mainPanelLayout.createSequentialGroup()
-                            .addContainerGap()
-                            .addGroup(mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, mainPanelLayout.createSequentialGroup()
-                                    .addComponent(jPApp, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGap(18, 18, 18)
-                                    .addComponent(jPGame, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGap(18, 18, 18)
-                                    .addComponent(jPWebsite, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, mainPanelLayout.createSequentialGroup()
-                                    .addGap(321, 321, 321)
-                                    .addGroup(mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(jLProjectType, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGroup(mainPanelLayout.createSequentialGroup()
-                                            .addComponent(rBApp)
-                                            .addGap(18, 18, 18)
-                                            .addComponent(rBGame)
-                                            .addGap(18, 18, 18)
-                                            .addComponent(rBWebsite, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE))))))
-                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, mainPanelLayout.createSequentialGroup()
-                            .addGap(14, 14, 14)
-                            .addGroup(mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGroup(mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(mainPanelLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addGroup(mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, mainPanelLayout.createSequentialGroup()
+                                .addComponent(jPApp, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(jPGame, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(jPWebsite, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, mainPanelLayout.createSequentialGroup()
+                                .addGap(321, 321, 321)
+                                .addGroup(mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLProjectType, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addGroup(mainPanelLayout.createSequentialGroup()
-                                        .addComponent(lProjectPrice, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(tFProjectPrice, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                                    .addGroup(mainPanelLayout.createSequentialGroup()
-                                        .addComponent(lClientName, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(tFClientName, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(mainPanelLayout.createSequentialGroup()
-                                        .addComponent(label1, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(tFProjectName, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                            .addGap(13, 13, 13)
-                            .addComponent(jLProjectDeadline, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(jFTDate)))
+                                        .addComponent(rBApp)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(rBGame)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(rBWebsite, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE))))))
                     .addGroup(mainPanelLayout.createSequentialGroup()
                         .addContainerGap()
                         .addGroup(mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -479,14 +476,43 @@ public class Frame extends javax.swing.JFrame {
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addComponent(btnCollate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(button3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(btnAddProject, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 528, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                 .addContainerGap(35, Short.MAX_VALUE))
+            .addGroup(mainPanelLayout.createSequentialGroup()
+                .addGap(14, 14, 14)
+                .addGroup(mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addGroup(mainPanelLayout.createSequentialGroup()
+                            .addComponent(lProjectPrice, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(tFProjectPrice, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGroup(mainPanelLayout.createSequentialGroup()
+                            .addComponent(lClientName, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(tFClientName, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(mainPanelLayout.createSequentialGroup()
+                            .addComponent(label1, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(tFProjectName, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addGroup(mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(mainPanelLayout.createSequentialGroup()
+                        .addGap(13, 13, 13)
+                        .addComponent(jLProjectDeadline, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jFTDate))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, mainPanelLayout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnCollate2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(86, 86, 86))))
         );
         mainPanelLayout.setVerticalGroup(
             mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(mainPanelLayout.createSequentialGroup()
-                .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnCollate2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(47, 47, 47)
                 .addGroup(mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(tFProjectName, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -520,7 +546,7 @@ public class Frame extends javax.swing.JFrame {
                 .addGroup(mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(button1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(button2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(button3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnAddProject, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnCollate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
         );
@@ -550,7 +576,7 @@ public class Frame extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(lTitle, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 31, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 29, Short.MAX_VALUE)
                 .addComponent(mainPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(40, 40, 40))
         );
@@ -629,15 +655,15 @@ public class Frame extends javax.swing.JFrame {
     }//GEN-LAST:event_rBWebsiteActionPerformed
     
     void iOSRadioBtn(){
-        GetAndSet.setAdditionalInfo("iOS App");
+        GetAndSet.setPlatform("iOS App");
     }
     
     void androidRadioBtn(){
-        GetAndSet.setAdditionalInfo("Android App");
+        GetAndSet.setPlatform("Android App");
     }
     
     void otherRadioBtn(){
-        GetAndSet.setAdditionalInfo("Other");
+        GetAndSet.setPlatform("Other");
     }
     
     private void rbAndroidActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbAndroidActionPerformed
@@ -688,15 +714,15 @@ public class Frame extends javax.swing.JFrame {
     private void btnCollateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCollateActionPerformed
         
         if(rBApp.isSelected()){
-            sAddInfo = "  Platform " + GetAndSet.getPlatform();
+            GetAndSet.setAddInfo("  Platform " + GetAndSet.getPlatform());
         }
 
         if(rBGame.isSelected()){
-            sAddInfo = "  Game Details " + GetAndSet.getGame();
+            GetAndSet.setAddInfo("  Game Details " + GetAndSet.getGame());
         }
 
         if(rBWebsite.isSelected()){
-            sAddInfo = "  Website Information " + GetAndSet.getWebsite();
+            GetAndSet.setAddInfo("  Website Information " + GetAndSet.getWebsite());
         }
         
         jTextArea.setText("Project Title: " + tFProjectName.getText() + "\n"
@@ -705,7 +731,7 @@ public class Frame extends javax.swing.JFrame {
                 + "Client Name: " + tFClientName.getText() + "\n"
                 + "Project Type: " + GetAndSet.getProjectType() + "\n"
                 + "Additional Information:\n"
-                + sAddInfo);
+                + GetAndSet.getAddInfo());
     }//GEN-LAST:event_btnCollateActionPerformed
 
     private void tFProjectPriceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tFProjectPriceActionPerformed
@@ -721,11 +747,11 @@ public class Frame extends javax.swing.JFrame {
     }//GEN-LAST:event_tFGenreActionPerformed
 
     private void tFPlatformFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tFPlatformFocusLost
-        GetAndSet.setAdditionalInfo(tFPlatform.getText(),tFGenre.getText());
+        GetAndSet.setGame(tFPlatform.getText(),tFGenre.getText());
     }//GEN-LAST:event_tFPlatformFocusLost
 
     private void tFGenreFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tFGenreFocusLost
-        GetAndSet.setAdditionalInfo(tFPlatform.getText(),tFGenre.getText());
+        GetAndSet.setGame(tFPlatform.getText(),tFGenre.getText());
     }//GEN-LAST:event_tFGenreFocusLost
 
     private void tFPlatformKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tFPlatformKeyPressed
@@ -744,19 +770,25 @@ public class Frame extends javax.swing.JFrame {
         jTextArea();
     }//GEN-LAST:event_button2ActionPerformed
 
-    private void button3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button3ActionPerformed
-        int aOut = 0, aIn = 0;
+    private void btnAddProjectActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddProjectActionPerformed
         
-        
-        
-        for(aOut = 0; aOut < aOut+1 ;aOut++){
-            
-       }
-    }//GEN-LAST:event_button3ActionPerformed
+    }//GEN-LAST:event_btnAddProjectActionPerformed
 
     private void jFTDateKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jFTDateKeyPressed
         
     }//GEN-LAST:event_jFTDateKeyPressed
+
+    private void tFServerAddressFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tFServerAddressFocusLost
+        GetAndSet.setWebsite(tFServerAddress.getText(),tFNumberPages.getText());
+    }//GEN-LAST:event_tFServerAddressFocusLost
+
+    private void tFNumberPagesFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tFNumberPagesFocusLost
+        GetAndSet.setWebsite(tFServerAddress.getText(),tFNumberPages.getText());
+    }//GEN-LAST:event_tFNumberPagesFocusLost
+
+    private void btnCollate2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCollate2ActionPerformed
+        System.out.println(GetAndSet.getArray());
+    }//GEN-LAST:event_btnCollate2ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -794,10 +826,11 @@ public class Frame extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private java.awt.Button btnAddProject;
     private java.awt.Button btnCollate;
+    private java.awt.Button btnCollate2;
     private java.awt.Button button1;
     private java.awt.Button button2;
-    private java.awt.Button button3;
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.ButtonGroup buttonGroup2;
     private javax.swing.JComboBox jComboBox1;
