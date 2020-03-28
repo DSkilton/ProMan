@@ -5,13 +5,22 @@
  */
 package proman1;
 
+import java.util.Calendar;
+import java.util.Date;
+
 /**
  *
  * @author MC03353
  */
 public class GetAndSet {
-    private static String sGame, sWebsite, sApp,sProjectName, sClientName, sProjectType, sPlatform, sGenre, sServerName;
+    private static String sDate, sGame, sWebsite, sApp,sProjectName, sClientName, sProjectType, sPlatform, sGenre, sServerName;
+    private static Date dDate;
     private static int iPages;
+    
+    public  static Date getDate(){
+        dDate = Calendar.getInstance().getTime();
+        return dDate;
+    }
     
     public static void setAdditionalInfo(String sPlatform){
         GetAndSet.sPlatform = sPlatform;        
@@ -80,4 +89,8 @@ public class GetAndSet {
     public static void setProjectName(String sProjectName) {
         GetAndSet.sProjectName = sProjectName;
     }   
+
+    static String setDate() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 }

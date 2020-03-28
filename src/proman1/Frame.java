@@ -5,13 +5,13 @@
  */
 package proman1;
 
-import java.awt.Color;
 /**
  *
  * @author MC03353
  */
 public class Frame extends javax.swing.JFrame {
     private static String sAddInfo = null;
+    private String[][] aProject = new String [10][];
     /**
      * Creates new form Frame
      */
@@ -132,10 +132,15 @@ public class Frame extends javax.swing.JFrame {
             }
         });
 
-        jFTDate.setText("dd/mm/yy");
+        jFTDate.setText(GetAndSet.getDate()+"");
         jFTDate.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jFTDateActionPerformed(evt);
+            }
+        });
+        jFTDate.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jFTDateKeyPressed(evt);
             }
         });
 
@@ -352,7 +357,7 @@ public class Frame extends javax.swing.JFrame {
                         .addGroup(jPWebsiteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel8)
                             .addComponent(jLabel7))
-                        .addGap(0, 31, Short.MAX_VALUE))
+                        .addGap(0, 29, Short.MAX_VALUE))
                     .addComponent(tFNumberPages, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
@@ -363,7 +368,7 @@ public class Frame extends javax.swing.JFrame {
                 .addComponent(jLabel8)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(tFServerAddress, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 17, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 15, Short.MAX_VALUE)
                 .addComponent(jLabel7)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(tFNumberPages, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -399,6 +404,11 @@ public class Frame extends javax.swing.JFrame {
 
         button3.setLabel("Add Project");
         button3.setName(""); // NOI18N
+        button3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                button3ActionPerformed(evt);
+            }
+        });
 
         btnCollate.setLabel("Collate");
         btnCollate.setName(""); // NOI18N
@@ -648,7 +658,7 @@ public class Frame extends javax.swing.JFrame {
     }//GEN-LAST:event_tFProjectNameActionPerformed
 
     private void jFTDateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jFTDateActionPerformed
-        // TODO add your handling code here:
+        
     }//GEN-LAST:event_jFTDateActionPerformed
 
     private void jTextAreaPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_jTextAreaPropertyChange
@@ -676,6 +686,7 @@ public class Frame extends javax.swing.JFrame {
     }//GEN-LAST:event_tFClientNameActionPerformed
     
     private void btnCollateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCollateActionPerformed
+        
         if(rBApp.isSelected()){
             sAddInfo = "  Platform " + GetAndSet.getPlatform();
         }
@@ -689,7 +700,7 @@ public class Frame extends javax.swing.JFrame {
         }
         
         jTextArea.setText("Project Title: " + tFProjectName.getText() + "\n"
-                + "Date: " + jFTDate.getText() + "\n"
+                + "Date: " + GetAndSet.getDate() + "\n"
                 + "Project Price £" + tFProjectPrice.getText() + "\n"
                 + "Client Name: " + tFClientName.getText() + "\n"
                 + "Project Type: " + GetAndSet.getProjectType() + "\n"
@@ -732,6 +743,20 @@ public class Frame extends javax.swing.JFrame {
     private void button2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button2ActionPerformed
         jTextArea();
     }//GEN-LAST:event_button2ActionPerformed
+
+    private void button3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button3ActionPerformed
+        int aOut = 0, aIn = 0;
+        
+        
+        
+        for(aOut = 0; aOut < aOut+1 ;aOut++){
+            
+       }
+    }//GEN-LAST:event_button3ActionPerformed
+
+    private void jFTDateKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jFTDateKeyPressed
+        
+    }//GEN-LAST:event_jFTDateKeyPressed
 
     /**
      * @param args the command line arguments
