@@ -10,8 +10,7 @@ package proman1;
  * @author MC03353
  */
 public class Frame extends javax.swing.JFrame {
-    private static String sAddInfo = null;
-    
+        
     /**
      * Creates new form Frame
      */
@@ -590,7 +589,6 @@ public class Frame extends javax.swing.JFrame {
         rBIos.setEnabled(true);
         rbAndroid.setEnabled(true);
         rbOther.setEnabled(true);
-        sAddInfo = " ";
     }
     
     //if the App radio button isn't selected, stops access to panel and contents    
@@ -605,7 +603,6 @@ public class Frame extends javax.swing.JFrame {
         jPGame.setEnabled(true);
         tFPlatform.setEnabled(true);
         tFGenre.setEnabled(true);
-        sAddInfo = " ";
     }
     
     void rBGameFalse(){
@@ -618,7 +615,6 @@ public class Frame extends javax.swing.JFrame {
         jPWebsite.setEnabled(true);
         tFServerAddress.setEnabled(true);
         tFNumberPages.setEnabled(true);
-        sAddInfo = " ";
     }
     
     void rBWebsiteFalse(){
@@ -712,7 +708,6 @@ public class Frame extends javax.swing.JFrame {
     }//GEN-LAST:event_tFClientNameActionPerformed
     
     private void btnCollateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCollateActionPerformed
-        
         if(rBApp.isSelected()){
             GetAndSet.setAddInfo("  Platform " + GetAndSet.getPlatform());
         }
@@ -771,7 +766,8 @@ public class Frame extends javax.swing.JFrame {
     }//GEN-LAST:event_button2ActionPerformed
 
     private void btnAddProjectActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddProjectActionPerformed
-        
+        GetAndSet.setArray();
+        GetAndSet.getArray();
     }//GEN-LAST:event_btnAddProjectActionPerformed
 
     private void jFTDateKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jFTDateKeyPressed
@@ -787,7 +783,7 @@ public class Frame extends javax.swing.JFrame {
     }//GEN-LAST:event_tFNumberPagesFocusLost
 
     private void btnCollate2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCollate2ActionPerformed
-        System.out.println(GetAndSet.getArray());
+        
     }//GEN-LAST:event_btnCollate2ActionPerformed
 
     /**

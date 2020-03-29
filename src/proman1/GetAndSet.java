@@ -16,18 +16,18 @@ import java.util.Date;
 public class GetAndSet {
     private static String sPages, sAddInfo, sGame, sWebsite, sProjectName, sClientName, sProjectType, sPlatform, sGenre, sServerName;
     private static Date dDate;
-    private static String[][] aProject = new String [10][];
+    private static String[][] aProject = new String [10][10];
     
     public static void setArray(){
-        int iRow = 0;
-        GetAndSet.aProject[iRow][0] = getProjectName()+"";
-        GetAndSet.aProject[iRow][1] = getClientName()+"";
-        GetAndSet.aProject[iRow][2] = getProjectType()+"";
-        GetAndSet.aProject[iRow][3] = getAddInfo()+"";        
+        GetAndSet.aProject[0][0] = getProjectName()+"";
+        GetAndSet.aProject[0][1] = getClientName()+"";
+        GetAndSet.aProject[0][2] = getProjectType()+"";
+        GetAndSet.aProject[0][3] = getAddInfo()+"";        
     }
     
     public static String getArray(){
-        return Arrays.deepToString(aProject);
+        System.out.println(Arrays.deepToString(aProject));
+        return aProject.toString();
     }
     
     public static Date getDate(){
@@ -109,4 +109,9 @@ public class GetAndSet {
     public static void setProjectName(String sProjectName) {
         GetAndSet.sProjectName = sProjectName;
     }
+    
+    @Override
+    public String toString(){
+        return getProjectName() + " " + getClientName() + " " + getProjectType() + " " + getAddInfo();
+    } 
 }
