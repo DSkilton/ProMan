@@ -676,7 +676,7 @@ public class Frame extends javax.swing.JFrame {
     }//GEN-LAST:event_rbOtherActionPerformed
 
     private void tFProjectNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tFProjectNameActionPerformed
-        GetAndSet.setProjectName(tFProjectName.getText());
+        
     }//GEN-LAST:event_tFProjectNameActionPerformed
 
     private void jFTDateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jFTDateActionPerformed
@@ -686,6 +686,7 @@ public class Frame extends javax.swing.JFrame {
     private void jTextAreaPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_jTextAreaPropertyChange
         jTextArea();
     }//GEN-LAST:event_jTextAreaPropertyChange
+    
     private void jTextArea(){
         jTextArea.setText("Project Title: \n"
                     + "Date: \n"
@@ -701,13 +702,14 @@ public class Frame extends javax.swing.JFrame {
         
     }
     
-    
-    
     private void tFClientNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tFClientNameActionPerformed
 
     }//GEN-LAST:event_tFClientNameActionPerformed
     
     private void btnCollateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCollateActionPerformed
+        GetAndSet.setProjectName(tFProjectName.getText());
+        GetAndSet.setClientName(tFClientName.getText());
+        
         if(rBApp.isSelected()){
             GetAndSet.setAddInfo("  Platform " + GetAndSet.getPlatform());
         }
@@ -727,6 +729,8 @@ public class Frame extends javax.swing.JFrame {
                 + "Project Type: " + GetAndSet.getProjectType() + "\n"
                 + "Additional Information:\n"
                 + GetAndSet.getAddInfo());
+        
+        GetAndSet.updateArray();
     }//GEN-LAST:event_btnCollateActionPerformed
 
     private void tFProjectPriceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tFProjectPriceActionPerformed

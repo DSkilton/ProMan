@@ -14,20 +14,34 @@ import java.util.Date;
  * @author MC03353
  */
 public class GetAndSet {
-    private static String sPages, sAddInfo, sGame, sWebsite, sProjectName, sClientName, sProjectType, sPlatform, sGenre, sServerName;
+    private static String sPages, sAddInfo, sGame, sWebsite, sProjectName, sClientName, 
+                    sProjectType, sPlatform, sGenre, sServerName, sProjectPrice;
     private static Date dDate;
-    private static String[][] aProject = new String [10][10];
+    private static int aRow = 0, aColumn = 0;
+    private static String[][] aProject = new String [10][4];
+    
+    public static void updateArray(){
+        GetAndSet.aRow++;
+    }
     
     public static void setArray(){
-        GetAndSet.aProject[0][0] = getProjectName()+"";
-        GetAndSet.aProject[0][1] = getClientName()+"";
-        GetAndSet.aProject[0][2] = getProjectType()+"";
-        GetAndSet.aProject[0][3] = getAddInfo()+"";        
+        GetAndSet.aProject[aRow][0] = getProjectName()+"";
+        GetAndSet.aProject[aRow][1] = getClientName()+"";
+        GetAndSet.aProject[aRow][2] = getProjectType()+"";
+        GetAndSet.aProject[aRow][3] = getAddInfo()+"";        
     }
     
     public static String getArray(){
         System.out.println(Arrays.deepToString(aProject));
         return aProject.toString();
+    }
+    
+    public static void setProjectPrice(String sProjectPrice){
+        GetAndSet.sProjectPrice = sProjectPrice;
+    }
+    
+    public static String getProjectPrice(){
+        return sProjectPrice;
     }
     
     public static Date getDate(){
@@ -85,11 +99,6 @@ public class GetAndSet {
     }
 
     public static String getClientName(){
-        String ClientName = null;
-        if (ClientName == null){
-            sClientName = "";
-            return sClientName;      
-        }
         return sClientName;
     }
     
@@ -97,21 +106,11 @@ public class GetAndSet {
         GetAndSet.sClientName = sClientName;
     }
     
-    public static String getProjectName() {
-        String getProjectName = null;
-        if (getProjectName == null) {
-            sProjectName = "";
-            return sProjectName;
-        } 
+    public static String getProjectName() { 
         return sProjectName;
     }
 
     public static void setProjectName(String sProjectName) {
         GetAndSet.sProjectName = sProjectName;
     }
-    
-    @Override
-    public String toString(){
-        return getProjectName() + " " + getClientName() + " " + getProjectType() + " " + getAddInfo();
-    } 
 }
