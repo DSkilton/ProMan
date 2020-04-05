@@ -20,10 +20,24 @@ public class GetAndSet {
     private static int aRow = 0, aColumn = 0;
     private static String[][] aProject = new String [10][4];
     
-    public static void updateArray(){
-        GetAndSet.aRow++;
+    public static int updateArray(){
+        if(aProject[aRow][0] != null){
+            GetAndSet.aRow++;
+        }
+        return aRow;
     }
     
+    public static String[] getArray(){
+        String[] aClientName = new String[10];
+        
+        for(int j = 0;j <= aRow ;j++){
+            aClientName[j] = aProject[j][1];
+//            System.out.println("This " + Arrays.toString(aClientName) + "is saved to " + (aRow-1));
+        }
+        
+        return aClientName;
+    }
+   
     public static void setArray(){
         GetAndSet.aProject[aRow][0] = getProjectName()+"";
         GetAndSet.aProject[aRow][1] = getClientName()+"";
@@ -31,9 +45,9 @@ public class GetAndSet {
         GetAndSet.aProject[aRow][3] = getAddInfo()+"";        
     }
     
-    public static String getArray(){
-        System.out.println(Arrays.deepToString(aProject));
-        return aProject.toString();
+    public static String getArrayString(){
+//        System.out.println(Arrays.deepToString(aProject));
+        return Arrays.toString(aProject);
     }
     
     public static void setProjectPrice(String sProjectPrice){
