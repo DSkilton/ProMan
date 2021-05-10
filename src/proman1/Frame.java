@@ -15,6 +15,7 @@ public class Frame extends javax.swing.JFrame {
      * Creates new form Frame
      */
     public Frame() {
+        //creates the form and displays it 
         initComponents();
     }
 
@@ -597,30 +598,35 @@ public class Frame extends javax.swing.JFrame {
         rbOther.setEnabled(false);
     }
     
+    //if the Game radio button is selected, allows access to panel and contents
     void rBGameTrue(){
         jPGame.setEnabled(true);
         tFPlatform.setEnabled(true);
         tFGenre.setEnabled(true);
     }
     
+    //if the Game radio button isn't selected, stops access to panel and contents 
     void rBGameFalse(){
         jPGame.setEnabled(false);
         tFPlatform.setEnabled(false);
         tFGenre.setEnabled(false);      
     }
     
+    //if the Website radio button is selected, allows access to panel and contents
     void rBWebsiteTrue(){
         jPWebsite.setEnabled(true);
         tFServerAddress.setEnabled(true);
         tFNumberPages.setEnabled(true);
     }
     
+    //if the Website radio button is selected, allows access to panel and contents
     void rBWebsiteFalse(){
         jPWebsite.setEnabled(false);
         tFServerAddress.setEnabled(false);
         tFNumberPages.setEnabled(false);
     }
     
+    //sets the project type to App
     private void rBAppActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rBAppActionPerformed
         if(rBApp.isSelected()){
             GetAndSet.setProjectType("App");
@@ -630,6 +636,7 @@ public class Frame extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_rBAppActionPerformed
 
+    //sets the project type to Game
     private void rBGameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rBGameActionPerformed
         if(rBGame.isSelected()){
             GetAndSet.setProjectType("Game");
@@ -639,6 +646,7 @@ public class Frame extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_rBGameActionPerformed
 
+    //sets the project type to Website
     private void rBWebsiteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rBWebsiteActionPerformed
         if(rBWebsite.isSelected()){
             GetAndSet.setProjectType("Website");
@@ -648,43 +656,53 @@ public class Frame extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_rBWebsiteActionPerformed
     
+    //sets the project to iOS App
     void iOSRadioBtn(){
         GetAndSet.setPlatform("iOS App");
     }
     
+    //sets the project to Android App    
     void androidRadioBtn(){
         GetAndSet.setPlatform("Android App");
     }
     
+    //sets the project to other     
     void otherRadioBtn(){
         GetAndSet.setPlatform("Other");
     }
     
+    //event listener which calls the androidRadioBtn method when clicked
     private void rbAndroidActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbAndroidActionPerformed
         androidRadioBtn();
     }//GEN-LAST:event_rbAndroidActionPerformed
 
+    //event listener which calls the IosRadioBtn method when clicked
     private void rBIosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rBIosActionPerformed
         iOSRadioBtn();
         
     }//GEN-LAST:event_rBIosActionPerformed
 
+    //event listener which calls the otherRadioBtn method when clicked
     private void rbOtherActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbOtherActionPerformed
         otherRadioBtn();
     }//GEN-LAST:event_rbOtherActionPerformed
 
+    //unused pregenerated code
     private void tFProjectNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tFProjectNameActionPerformed
         
     }//GEN-LAST:event_tFProjectNameActionPerformed
 
+    //unused pregenerated code
     private void jFTDateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jFTDateActionPerformed
         
     }//GEN-LAST:event_jFTDateActionPerformed
 
+    //event listener which calls the jTextArea method
     private void jTextAreaPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_jTextAreaPropertyChange
         jTextArea();
     }//GEN-LAST:event_jTextAreaPropertyChange
     
+    //sets jTextArea to blank initially
     private void jTextArea(){
         jTextArea.setText("Project Title: \n"
                     + "Date: \n"
@@ -704,6 +722,7 @@ public class Frame extends javax.swing.JFrame {
 
     }//GEN-LAST:event_tFClientNameActionPerformed
     
+    //sets and updates the Text area with project details 
     private void btnCollateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCollateActionPerformed
         GetAndSet.setProjectName(tFProjectName.getText());
         GetAndSet.setClientName(tFClientName.getText());
@@ -743,6 +762,7 @@ public class Frame extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_tFGenreActionPerformed
 
+    //sets the setGame variable
     private void tFPlatformFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tFPlatformFocusLost
         GetAndSet.setGame(tFPlatform.getText(),tFGenre.getText());
     }//GEN-LAST:event_tFPlatformFocusLost
@@ -759,6 +779,7 @@ public class Frame extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_tFServerAddressActionPerformed
 
+    //exits the system
     private void button1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button1ActionPerformed
         System.exit(0);
     }//GEN-LAST:event_button1ActionPerformed
@@ -767,6 +788,7 @@ public class Frame extends javax.swing.JFrame {
         jTextArea();
     }//GEN-LAST:event_button2ActionPerformed
 
+//    adds current projects to an array so the drop down box can be used
     private void btnAddProjectActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddProjectActionPerformed
         GetAndSet.setArray();
         GetAndSet.updateArray();
@@ -785,6 +807,7 @@ public class Frame extends javax.swing.JFrame {
         GetAndSet.setWebsite(tFServerAddress.getText(),tFNumberPages.getText());
     }//GEN-LAST:event_tFNumberPagesFocusLost
 
+//    logic to update the array contents and comboBox
     private void comboBoxFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_comboBoxFocusGained
         int iCounter = 0;
         String comboBoxContents; 
